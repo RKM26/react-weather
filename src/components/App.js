@@ -1,4 +1,5 @@
 import React, {  useState } from "react";
+require('dotenv').config();
 
 const api = {
   base: "http://api.openweathermap.org/data/2.5/",
@@ -54,7 +55,7 @@ const App = (d) => {
   };
 
   return (
-    <div className={(typeof weather.main != "undefined") ? (weather.main.temp>16) ? 'app warm' : 'app': 'app' }>
+    <div className={(typeof weather.main != "undefined") ? (Math.round(weather.main.temp-273.15)>16) ? 'app warm' : 'app': 'app' }>
       <main>
         <div className="search-box">
           <input
